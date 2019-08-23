@@ -101,12 +101,13 @@ script{
 script{
     //多平台开发模式
     "dev:h5":           "cross-env NODE_ENV=development UNI_PLATFORM=h5          vue-cli-service uni-serve",
+    "dev:mp-weixin":    "cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin   vue-cli-service uni-build --watch",
     "dev:app-plus":     "cross-env NODE_ENV=development UNI_PLATFORM=app-plus    vue-cli-service uni-build --watch",
     "dev:mp-alipay":    "cross-env NODE_ENV=development UNI_PLATFORM=mp-alipay   vue-cli-service uni-build --watch",
     "dev:mp-baidu":     "cross-env NODE_ENV=development UNI_PLATFORM=mp-baidu    vue-cli-service uni-build --watch",
     "dev:mp-qq":        "cross-env NODE_ENV=development UNI_PLATFORM=mp-qq       vue-cli-service uni-build --watch",
     "dev:mp-toutiao":   "cross-env NODE_ENV=development UNI_PLATFORM=mp-toutiao  vue-cli-service uni-build --watch",
-    "dev:mp-weixin":    "cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin   vue-cli-service uni-build --watch",
+
     "dev:custom":       "cross-env NODE_ENV=development uniapp-cli custom",
 }
 ```
@@ -114,16 +115,27 @@ script{
 
 ### 功能
 - uniApp打包发布
+
+### 基础参数
+- `cross-env`
+- `NODE_ENV`,    开发模式使用`production`
+- `UNI_PLATFORM` 平台参数不同平台使用对应的平台标志符
 ### 关键命令
 ```json
 script{
-    "build:app-plus": "cross-env NODE_ENV=production UNI_PLATFORM=app-plus vue-cli-service uni-build",
-    "build:custom": "cross-env NODE_ENV=production uniapp-cli custom",
-    "build:h5": "cross-env NODE_ENV=production UNI_PLATFORM=h5 vue-cli-service uni-build",
-    "build:mp-alipay": "cross-env NODE_ENV=production UNI_PLATFORM=mp-alipay vue-cli-service uni-build",
-    "build:mp-baidu": "cross-env NODE_ENV=production UNI_PLATFORM=mp-baidu vue-cli-service uni-build",
-    "build:mp-qq": "cross-env NODE_ENV=production UNI_PLATFORM=mp-qq vue-cli-service uni-build",
-    "build:mp-toutiao": "cross-env NODE_ENV=production UNI_PLATFORM=mp-toutiao vue-cli-service uni-build",
-    "build:mp-weixin": "cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build",
+    //多平台打包模式
+    "build:h5":         "cross-env NODE_ENV=production UNI_PLATFORM=h5          vue-cli-service uni-build",
+    "build:mp-weixin":  "cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin   vue-cli-service uni-build",
+    "build:app-plus":   "cross-env NODE_ENV=production UNI_PLATFORM=app-plus    vue-cli-service uni-build",
+    "build:mp-alipay":  "cross-env NODE_ENV=production UNI_PLATFORM=mp-alipay   vue-cli-service uni-build",
+    "build:mp-baidu":   "cross-env NODE_ENV=production UNI_PLATFORM=mp-baidu    vue-cli-service uni-build",
+    "build:mp-qq":      "cross-env NODE_ENV=production UNI_PLATFORM=mp-qq       vue-cli-service uni-build",
+    "build:mp-toutiao": "cross-env NODE_ENV=production UNI_PLATFORM=mp-toutiao  vue-cli-service uni-build",
+    
+    "build:custom":     "cross-env NODE_ENV=production uniapp-cli custom",
 }
 ```
+## 总结
+- uniAppCli为`vue-cli`注册了`uni-serve`和`uni-build`两个命令
+- `uni-serve`用在`h5 dev`开发模式中
+- `uni-build`用在除`h5`的开发模式和所有打包模式中
